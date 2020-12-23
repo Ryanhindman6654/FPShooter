@@ -14,6 +14,5 @@ UUserProfile::UUserProfile()
 	args.Add(FStringFormatArg(Name));
 	FString string = FString::Format(TEXT("Name = {0}, Mana = {1}"), args);
 	UE_LOG(LogTemp, Warning, TEXT("%s %s"), *FP_LOG_CALLINFO, *string);
-
 }
 

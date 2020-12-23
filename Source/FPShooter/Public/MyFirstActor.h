@@ -10,10 +10,6 @@ UCLASS()
 class FPSHOOTER_API AMyFirstActor : public AActor
 {
 	GENERATED_BODY()
-	
-public:	
-	// Sets default values for this actor's properties
-	AMyFirstActor();
 
 protected:
 	// Called when the game starts or when spawned
@@ -21,6 +17,16 @@ protected:
 
 public:	
 	// Called every frame
+	AMyFirstActor();
 	virtual void Tick(float DeltaTime) override;
+
+	UPROPERTY(VisibleAnywhere)
+	USceneComponent* Root;
+	UPROPERTY(VisibleAnywhere)
+	USceneComponent* ChildSceneCoimponent;
+	UPROPERTY(VisibleAnywhere)
+	UStaticMeshComponent* BoxOne;
+	UPROPERTY(VisibleAnywhere)
+	UStaticMeshComponent* BoxTwo;
 
 };
