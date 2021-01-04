@@ -31,8 +31,8 @@ void URandomMovementComponent::TickComponent(float DeltaTime, ELevelTick TickTyp
 	
 	AActor* Parent = GetOwner(); // 액터 컴포넌트의 현 액터
 	if (Parent)
-	{
-		Parent->SetActorLocation(Parent->GetActorLocation() + // 액터를 현재 위치에서 다른 위치로 이동 
+	{	// SetActorLoc = 액터의 위치 설정
+		Parent->SetActorLocation(Parent->GetActorLocation() + // 현재 위치 값에다 새로운 위치값(vec)을 더해서(+) 액터를 현재 위치에서 다른 위치로 이동 
 			FVector(
 				FMath::FRandRange(-1, 1) * MovementRadius, // XYZ 간격
 				FMath::FRandRange(-1, 1) * MovementRadius, 

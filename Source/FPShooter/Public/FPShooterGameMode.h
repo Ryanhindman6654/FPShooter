@@ -24,7 +24,7 @@ public:
 	void BeginPlay() override;
 
 	UPROPERTY()
-	class AMyFirstActor * SpawnedActor;
+	class AMyFirstActor * SpawnedActor; // 액터 주소 포인터
 
 	UFUNCTION()
 	void DestroyActorFunction();
