@@ -28,16 +28,6 @@ public:
 
 	UFUNCTION()
 	void DestroyActorFunction();
-
-	UPROPERTY()
-	TArray<AInventoryActor*> CurrentInventory;
-
-	UFUNCTION()
-	int32 AddtoInventory(AInventoryActor * ActorToAdd);
-
-	UFUNCTION()
-	void RemoveFromInventory(AInventoryActor* ActorToRemove);
-
 };
 
 

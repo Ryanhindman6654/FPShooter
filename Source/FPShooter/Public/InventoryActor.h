@@ -13,8 +13,8 @@ UCLASS()
 class FPSHOOTER_API AInventoryActor : public AStaticMeshActor
 {
 	GENERATED_BODY()
-	
-	AInventoryActor();
-	virtual void PickUp();
-	virtual void PutDown(FTransform TargetLocation);
+public:
+	AInventoryActor(); // 인벤토리로 저장할 수 있는 액터
+	virtual void PickUp(); // 아이템 획득
+	virtual void PutDown(FTransform TargetLocation); // 아이템 버리기(놓기)
 };

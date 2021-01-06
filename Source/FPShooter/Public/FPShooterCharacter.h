@@ -144,5 +144,17 @@ public:
 	/** Returns FirstPersonCameraComponent subobject **/
 	UCameraComponent* GetFirstPersonCameraComponent() const { return FirstPersonCameraComponent; }
 
+	UPROPERTY()
+	class UInventoryComponent* MyInventory;
+
+	UFUNCTION()
+	void DropItem();
+
+	UFUNCTION()
+	void TakeItem(class AInventoryActor* InventoryItem);
+
+	UFUNCTION()
+	virtual void NotifyHit(class UPrimitiveComponent* MyComp, AActor* Other, class UPrimitiveComponent* OtherComp, bool bSelfMoved, FVector HitLocation, FVector HitNormal, FVector NormalImpulse, const FHitResult& Hit) override;
+
 };
 

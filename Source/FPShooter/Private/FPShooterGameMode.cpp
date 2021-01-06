@@ -6,7 +6,6 @@
 #include "UserProfile.h"
 #include "CustomStruct.h"
 #include "MyFirstActor.h"
-#include "InventoryComponent.h"
 #include "UObject/ConstructorHelpers.h"
 
 AFPShooterGameMode::AFPShooterGameMode() : Super()
@@ -37,7 +36,7 @@ void AFPShooterGameMode::BeginPlay()
 	FTimerHandle Timer;
 
 	SpawnedActor = GetWorld()->SpawnActor<AMyFirstActor>(AMyFirstActor::StaticClass(), SpawnLocation); // 액터 생성
-	GetWorldTimerManager().SetTimer(Timer, this, &AFPShooterGameMode::DestroyActorFunction, 5); // 5초후 액터 삭제
+	GetWorldTimerManager().SetTimer(Timer, this, &AFPShooterGameMode::DestroyActorFunction, 5);
 	GEngine->AddOnScreenDebugMessage(7, 3.0f, FColor::Blue, TEXT("Actor Spawning")); // 게임화면에 로그 기록
 }
 
@@ -48,15 +47,3 @@ void AFPShooterGameMode::DestroyActorFunction()
 		SpawnedActor->Destroy();
 	}
 }
-
-int32 AFPShooterGameMode::AddtoInventory(AInventoryActor* ActorToAdd)
-{
-	return CurrentInventory.Add(ActorToAdd);
-}
-
-void AFPShooterGameMode::RemoveFromInventory(AInventoryActor* ActorToRemove)
-{
-	CurrentInventory.Remove(ActorToRemove);
-}
-
-

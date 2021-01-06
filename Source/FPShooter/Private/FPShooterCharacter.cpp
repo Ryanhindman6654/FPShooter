@@ -10,6 +10,8 @@
 #include "HeadMountedDisplayFunctionLibrary.h"
 #include "Kismet/GameplayStatics.h"
 #include "MotionControllerComponent.h"
+#include "InventoryComponent.h"
+#include "InventoryActor.h"
 #include "XRMotionControllerBase.h" // for FXRMotionControllerBase::RightHandSourceId
 
 DEFINE_LOG_CATEGORY_STATIC(LogFPChar, Warning, All);
@@ -80,6 +82,8 @@ AFPShooterCharacter::AFPShooterCharacter()
 	VR_MuzzleLocation->SetRelativeLocation(FVector(0.000004, 53.999992, 10.000000));
 	VR_MuzzleLocation->SetRelativeRotation(FRotator(0.0f, 90.0f, 0.0f));		// Counteract the rotation of the VR gun model.
 
+	MyInventory = CreateDefaultSubobject<UInventoryComponent>("MyInventory");
+
 	// Uncomment the following line to turn motion controllers on by default:
 	//bUsingMotionControllers = true;
 }
@@ -136,6 +140,9 @@ void AFPShooterCharacter::SetupPlayerInputComponent(class UInputComponent* Playe
 	PlayerInputComponent->BindAxis("TurnRate", this, &AFPShooterCharacter::TurnAtRate);
 	PlayerInputComponent->BindAxis("LookUp", this, &APawn::AddControllerPitchInput);
 	PlayerInputComponent->BindAxis("LookUpRate", this, &AFPShooterCharacter::LookUpAtRate);
+
+	PlayerInputComponent->BindAction("DropItem", EInputEvent::IE_Pressed, this, &AFPShooterCharacter::DropItem); // 'E'키 바인딩
+
 }
 
 void AFPShooterCharacter::OnFire()
@@ -297,4 +304,36 @@ bool AFPShooterCharacter::EnableTouchscreenMovement(class UInputComponent* Playe
 	}
 	
 	return false;
+}
+
+void AFPShooterCharacter::DropItem() // 아이템 바닥에 버리기
+{
+	if (MyInventory->CurrentInventory.Num() == 0)
+	{
+		return;
+	}
+
+	AInventoryActor* Item = MyInventory->CurrentInventory.Last();
+	MyInventory->RemoveFromInventory(Item); // 최근 인벤토리 액터를 POP
+	FVector ItemOrigin, ItemBounds; // 아이템의 범위(스케일) 변수
+	Item->GetActorBounds(false, ItemOrigin, ItemBounds); // 변수 2개에 아이템의 범위(크기값)를 반환함
+	FTransform PutDownLocation = GetTransform() + FTransform(RootComponent->GetForwardVector() * ItemBounds.GetMax() * 5); // 아이템을 놓을 수 있는 좌표
+	Item->PutDown(PutDownLocation); // 좌표에 아이템 놓기
+}
+
+
+
+void AFPShooterCharacter::NotifyHit(UPrimitiveComponent* MyComp, AActor* Other, UPrimitiveComponent* OtherComp, bool bSelfMoved, FVector HitLocation, FVector HitNormal, FVector NormalImpulse, const FHitResult& Hit)
+{
+	AInventoryActor* InventoryItem = Cast<AInventoryActor>(Other); // 인벤토리 액터가 캐릭터랑 부딪힐(hit) 경우
+	if (InventoryItem != nullptr)
+	{
+		TakeItem(InventoryItem); // 아이템을 넣는 함수 실행
+	}
+}
+
+void AFPShooterCharacter::TakeItem(AInventoryActor* InventoryItem)
+{
+	InventoryItem->PickUp(); // 액터 삭제
+	MyInventory->AddtoInventory(InventoryItem); // 인벤토리 액터를 인벤터리 컴포넌트에 넣음
 }
