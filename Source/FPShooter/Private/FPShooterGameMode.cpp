@@ -6,6 +6,7 @@
 #include "UserProfile.h"
 #include "CustomStruct.h"
 #include "MyFirstActor.h"
+#include "InventoryComponent.h"
 #include "UObject/ConstructorHelpers.h"
 
 AFPShooterGameMode::AFPShooterGameMode() : Super()
@@ -46,6 +47,16 @@ void AFPShooterGameMode::DestroyActorFunction()
 	{
 		SpawnedActor->Destroy();
 	}
+}
+
+int32 AFPShooterGameMode::AddtoInventory(AInventoryActor* ActorToAdd)
+{
+	return CurrentInventory.Add(ActorToAdd);
+}
+
+void AFPShooterGameMode::RemoveFromInventory(AInventoryActor* ActorToRemove)
+{
+	CurrentInventory.Remove(ActorToRemove);
 }
 
 
