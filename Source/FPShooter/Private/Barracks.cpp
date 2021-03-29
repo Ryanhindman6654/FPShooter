@@ -56,7 +56,7 @@ void ABarracks::SpawnUnit() // 유닛 스폰 함수
 	GetWorld()->SpawnActor(UnitToSpawn, &SpawnLocation); // 해당 위치에 UnitToSpawn 객체 생성
 }
 
-void ABarracks::EndPlay(const EEndPlayReason::Type EndPlayReason) // 타이머 중지 함수
+void ABarracks::EndPlay(const EEndPlayReason::Type EndPlayReason) // 액터 종료시 호출되는 함수
 {
 	Super::EndPlay(EndPlayReason);
 	GetWorld()->GetTimerManager().ClearTimer(SpawnTimerHandle); // 부모 클래스가 파괴될 때 스폰 타이머를 해제(유효하지 않음)

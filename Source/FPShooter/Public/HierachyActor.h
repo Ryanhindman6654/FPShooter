@@ -24,7 +24,7 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	UPROPERTY()
-	USceneComponent* Root;
+	USceneComponent* Root; 
 
 	UPROPERTY()
 	USceneComponent* ChildScenceComponent;

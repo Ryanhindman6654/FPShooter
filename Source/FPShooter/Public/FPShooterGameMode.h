@@ -11,8 +11,6 @@ class AFPShooterGameMode : public AGameModeBase
 {
 	GENERATED_BODY()
 
-	
-
 public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = UClassNames)
@@ -24,10 +22,10 @@ public:
 	void BeginPlay() override;
 
 	UPROPERTY()
-	class AMyFirstActor * SpawnedActor; // 액터 주소 포인터
+	class AMyFirstActor * SpawnedActor; // 스폰할 액터 주소 포인터
 
 	UFUNCTION()
-	void DestroyActorFunction();
+	void DestroyActorFunction(); // 스폰한 액터 삭제 함수
 };
 
 

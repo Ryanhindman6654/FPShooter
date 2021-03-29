@@ -9,7 +9,7 @@
 
 
 UCLASS()
-class FPSHOOTER_API ABarracksUnit : public ACharacter
+class FPSHOOTER_API ABarracksUnit : public ACharacter // 배럭에서 스폰되는 유닛
 {
 	GENERATED_BODY()
 

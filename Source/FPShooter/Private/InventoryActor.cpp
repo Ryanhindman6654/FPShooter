@@ -10,7 +10,7 @@ AInventoryActor::AInventoryActor() :Super()
 	if (MeshAsset.Object != nullptr)
 	{
 		GetStaticMeshComponent()->SetStaticMesh(MeshAsset.Object);
-		GetStaticMeshComponent()->SetCollisionProfileName(FName(TEXT("Pawn"))); // Pawn 콜리전
+		GetStaticMeshComponent()->SetCollisionProfileName(FName(TEXT("Pawn"))); // Pawn 콜리전 적용
 	}
 	GetStaticMeshComponent()->SetMobility(EComponentMobility::Movable);
 	SetActorEnableCollision(true);

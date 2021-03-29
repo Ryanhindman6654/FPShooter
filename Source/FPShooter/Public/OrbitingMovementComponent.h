@@ -25,7 +25,7 @@ public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 	UPROPERTY()
-	bool RotateToFaceOutwards; // 매 틱마다 회전의 중앙을 모주볼지 여부
+	bool RotateToFaceOutwards; // 매 틱마다 회전의 중앙을 마주볼지 여부
 
 	UPROPERTY()
 	float RotationSpeed; // 매 초마다 컴포넌트가 회전하는 각도

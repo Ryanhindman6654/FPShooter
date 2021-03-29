@@ -8,7 +8,7 @@
 
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
-class FPSHOOTER_API URandomMovementComponent : public UActorComponent
+class FPSHOOTER_API URandomMovementComponent : public UActorComponent // 액터를 랜덤으로 이동시키는 컴포넌트
 {
 	GENERATED_BODY()
 

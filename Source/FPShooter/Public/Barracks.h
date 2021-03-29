@@ -41,7 +41,7 @@ public:
 	void SpawnUnit();
 
 	UFUNCTION()
-	void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
+	void EndPlay(const EEndPlayReason::Type EndPlayReason) override; // 액터 종료 시 호출되는 함수
 
 	UPROPERTY()
 	FTimerHandle SpawnTimerHandle;

@@ -28,6 +28,6 @@ public:
 	void Spawn(); // 스폰 함수
 
 	UPROPERTY(EditAnywhere)
-	TSubclassOf<AActor> ActorToSpawn; // 하위 클래스로 제한되는 포인터
+	TSubclassOf<class AHierachyActor> ActorToSpawn; // <하위 클래스(AActor)로 제한되는> 액터(HierachyActor) 주소를 저장하기 위한 포인터다.
 		
 };

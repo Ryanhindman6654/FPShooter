@@ -9,7 +9,7 @@ ABarracksUnit::ABarracksUnit()
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	VisualRepresentation = CreateDefaultSubobject<UParticleSystemComponent>("SpawnPoint"); // 스폰 유닛(파티클)
+	VisualRepresentation = CreateDefaultSubobject<UParticleSystemComponent>("SpawnPoint"); // 스폰 유닛(파티클) 지정
 	auto ParticleSystem = ConstructorHelpers::FObjectFinder<UParticleSystem>(TEXT("ParticleSystem'/Engine/Tutorial/SubEditors/TutorialAssets/TutorialParticleSystem.TutorialParticleSystem'"));
 	if (ParticleSystem.Succeeded())
 	{
