@@ -6,12 +6,16 @@
 #include "GameFramework/GameModeBase.h"
 #include "FPShooterGameMode.generated.h"
 
+DECLARE_DELEGATE(FStandardDelegateSignature)
+
 UCLASS(minimalapi)
 class AFPShooterGameMode : public AGameModeBase
 {
 	GENERATED_BODY()
 
 public:
+
+	FStandardDelegateSignature MyStandardDelegate;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = UClassNames)
 	TSubclassOf<class UUserProfile> UPBlueprintClassName;
