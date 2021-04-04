@@ -8,7 +8,7 @@
 
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
-class FPSHOOTER_API UOrbitingMovementComponent : public USceneComponent // ±Ëµµ ½Ã½ºÅÛ ÄÄÆ÷³ÍÆ®
+class FPSHOOTER_API UOrbitingMovementComponent : public USceneComponent // ê¶¤ë„ ì‹œìŠ¤í…œ ì»´í¬ë„ŒíŠ¸
 {
 	GENERATED_BODY()
 
@@ -25,14 +25,14 @@ public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 	UPROPERTY()
-	bool RotateToFaceOutwards; // ¸Å Æ½¸¶´Ù È¸ÀüÀÇ Áß¾ÓÀ» ¸¶ÁÖº¼Áö ¿©ºÎ
+	bool RotateToFaceOutwards; // ë§¤ í‹±ë§ˆë‹¤ íšŒì „ì˜ ì¤‘ì•™ì„ ë§ˆì£¼ë³¼ì§€ ì—¬ë¶€
 
 	UPROPERTY()
-	float RotationSpeed; // ¸Å ÃÊ¸¶´Ù ÄÄÆ÷³ÍÆ®°¡ È¸ÀüÇÏ´Â °¢µµ
+	float RotationSpeed; // ë§¤ ì´ˆë§ˆë‹¤ ì»´í¬ë„ŒíŠ¸ê°€ íšŒì „í•˜ëŠ” ê°ë„
 
 	UPROPERTY()
-	float OrbitDistance; // ÄÄÆ÷³ÍÆ®°¡ ¿øÁ¡¿¡¼­ ¿òÁ÷ÀÌ±â À§ÇØ È¸ÀüÇØ¾ß ÇÏ´Â °Å¸®
-	float CurrentValue; // ÇöÀç °¢µµ¿¡¼­ È¸Àü À§Ä¡
+	float OrbitDistance; // ì»´í¬ë„ŒíŠ¸ê°€ ì›ì ì—ì„œ ì›€ì§ì´ê¸° ìœ„í•´ íšŒì „í•´ì•¼ í•˜ëŠ” ê±°ë¦¬
+	float CurrentValue; // í˜„ì¬ ê°ë„ì—ì„œ íšŒì „ ìœ„ì¹˜
 
 		
 };

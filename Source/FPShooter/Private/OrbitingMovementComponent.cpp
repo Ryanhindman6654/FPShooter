@@ -10,11 +10,11 @@ UOrbitingMovementComponent::UOrbitingMovementComponent()
 	// off to improve performance if you don't need them.
 	PrimaryComponentTick.bCanEverTick = true;
 
-	RotationSpeed = 20;  // ¸Å ÃÊ¸¶´Ù ÄÄÆ÷³ÍÆ®°¡ È¸ÀüÇÏ´Â °¢µµ
-	OrbitDistance = 100; // ÄÄÆ÷³ÍÆ®°¡ ¿øÁ¡¿¡¼­ ¿òÁ÷ÀÌ±â À§ÇØ È¸ÀüÇØ¾ß ÇÏ´Â °Å¸®
-	CurrentValue = 0; // ÇöÀç °¢µµ¿¡¼­ È¸Àü À§Ä¡
-	RotateToFaceOutwards = true; // °øÀü À¯¹«
-	
+	RotationSpeed = 20;  // ë§¤ ì´ˆë§ˆë‹¤ ì»´í¬ë„ŒíŠ¸ê°€ íšŒì „í•˜ëŠ” ê°ë„
+	OrbitDistance = 100; // ì»´í¬ë„ŒíŠ¸ê°€ ì›ì ì—ì„œ ì›€ì§ì´ê¸° ìœ„í•´ íšŒì „í•´ì•¼ í•˜ëŠ” ê±°ë¦¬
+	CurrentValue = 0; // í˜„ì¬ ê°ë„ì—ì„œ íšŒì „ ìœ„ì¹˜
+	RotateToFaceOutwards = true; // ê³µì „ ìœ ë¬´
+
 }
 
 
@@ -24,24 +24,24 @@ void UOrbitingMovementComponent::BeginPlay()
 	Super::BeginPlay();
 
 	// ...
-	
+
 }
 
 
 // Called every frame
 void UOrbitingMovementComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
-{ 
+{
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	float CurrentValueInRadinas = FMath::DegreesToRadians<float>(CurrentValue); // CurentValue¸¦ µğ±×¸® °¢µµ¿¡¼­ ¶óµğ¾È °¢µµ·Î ¹Ù²Û´Ù.
+	float CurrentValueInRadinas = FMath::DegreesToRadians<float>(CurrentValue); // CurentValueë¥¼ ë””ê·¸ë¦¬ ê°ë„ì—ì„œ ë¼ë””ì•ˆ ê°ë„ë¡œ ë°”ê¾¼ë‹¤.
 	SetRelativeLocation(FVector(OrbitDistance *
 		FMath::Cos(CurrentValueInRadinas), OrbitDistance *
-		FMath::Sin(CurrentValueInRadinas), GetRelativeLocation().Z)); // È¸Àü À§Ä¡¸¦ °è»ê
+		FMath::Sin(CurrentValueInRadinas), GetRelativeLocation().Z)); // íšŒì „ ìœ„ì¹˜ë¥¼ ê³„ì‚°
 	if (RotateToFaceOutwards)
 	{
 		FVector LookDir = (GetRelativeLocation()).GetSafeNormal();
 		FRotator LookAtRot = LookDir.Rotation();
-		SetRelativeRotation(LookAtRot); // È¸Àü °¢µµ¸¦ °è»ê
+		SetRelativeRotation(LookAtRot); // íšŒì „ ê°ë„ë¥¼ ê³„ì‚°
 	}
 	CurrentValue = FMath::Fmod(CurrentValue + (RotationSpeed * DeltaTime), 360);
 }

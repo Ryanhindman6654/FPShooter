@@ -141,7 +141,7 @@ void AFPShooterCharacter::SetupPlayerInputComponent(class UInputComponent* Playe
 	PlayerInputComponent->BindAxis("LookUp", this, &APawn::AddControllerPitchInput);
 	PlayerInputComponent->BindAxis("LookUpRate", this, &AFPShooterCharacter::LookUpAtRate);
 
-	PlayerInputComponent->BindAction("DropItem", EInputEvent::IE_Pressed, this, &AFPShooterCharacter::DropItem); // 'E'Å° ¹ÙÀÎµù
+	PlayerInputComponent->BindAction("DropItem", EInputEvent::IE_Pressed, this, &AFPShooterCharacter::DropItem); // 'E'í‚¤ ë°”ì¸ë”©
 
 }
 
@@ -302,11 +302,11 @@ bool AFPShooterCharacter::EnableTouchscreenMovement(class UInputComponent* Playe
 		//PlayerInputComponent->BindTouch(EInputEvent::IE_Repeat, this, &AFPShooterCharacter::TouchUpdate);
 		return true;
 	}
-	
+
 	return false;
 }
 
-void AFPShooterCharacter::DropItem() // ¾ÆÀÌÅÛ ¹Ù´Ú¿¡ ¹ö¸®±â
+void AFPShooterCharacter::DropItem() // ì•„ì´í…œ ë°”ë‹¥ì— ë²„ë¦¬ê¸°
 {
 	if (MyInventory->CurrentInventory.Num() == 0)
 	{
@@ -314,26 +314,26 @@ void AFPShooterCharacter::DropItem() // ¾ÆÀÌÅÛ ¹Ù´Ú¿¡ ¹ö¸®±â
 	}
 
 	AInventoryActor* Item = MyInventory->CurrentInventory.Last();
-	MyInventory->RemoveFromInventory(Item); // ÃÖ±Ù ÀÎº¥Åä¸® ¾×ÅÍ¸¦ POP
-	FVector ItemOrigin, ItemBounds; // ¾ÆÀÌÅÛÀÇ ¹üÀ§(½ºÄÉÀÏ) º¯¼ö
-	Item->GetActorBounds(false, ItemOrigin, ItemBounds); // º¯¼ö 2°³¿¡ ¾ÆÀÌÅÛÀÇ ¹üÀ§(Å©±â°ª)¸¦ ¹İÈ¯ÇÔ
-	FTransform PutDownLocation = GetTransform() + FTransform(RootComponent->GetForwardVector() * ItemBounds.GetMax() * 5); // ¾ÆÀÌÅÛÀ» ³õÀ» ¼ö ÀÖ´Â ÁÂÇ¥
-	Item->PutDown(PutDownLocation); // ÁÂÇ¥¿¡ ¾ÆÀÌÅÛ ³õ±â
+	MyInventory->RemoveFromInventory(Item); // ìµœê·¼ ì¸ë²¤í† ë¦¬ ì•¡í„°ë¥¼ POP
+	FVector ItemOrigin, ItemBounds; // ì•„ì´í…œì˜ ë²”ìœ„(ìŠ¤ì¼€ì¼) ë³€ìˆ˜
+	Item->GetActorBounds(false, ItemOrigin, ItemBounds); // ë³€ìˆ˜ 2ê°œì— ì•„ì´í…œì˜ ë²”ìœ„(í¬ê¸°ê°’)ë¥¼ ë°˜í™˜í•¨
+	FTransform PutDownLocation = GetTransform() + FTransform(RootComponent->GetForwardVector() * ItemBounds.GetMax() * 5); // ì•„ì´í…œì„ ë†“ì„ ìˆ˜ ìˆëŠ” ì¢Œí‘œ
+	Item->PutDown(PutDownLocation); // ì¢Œí‘œì— ì•„ì´í…œ ë†“ê¸°
 }
 
 
 
 void AFPShooterCharacter::NotifyHit(UPrimitiveComponent* MyComp, AActor* Other, UPrimitiveComponent* OtherComp, bool bSelfMoved, FVector HitLocation, FVector HitNormal, FVector NormalImpulse, const FHitResult& Hit)
 {
-	AInventoryActor* InventoryItem = Cast<AInventoryActor>(Other); // ÀÎº¥Åä¸® ¾×ÅÍ°¡ Ä³¸¯ÅÍ¶û ºÎµúÈú(hit) °æ¿ì
+	AInventoryActor* InventoryItem = Cast<AInventoryActor>(Other); // ì¸ë²¤í† ë¦¬ ì•¡í„°ê°€ ìºë¦­í„°ë‘ ë¶€ë”ªí(hit) ê²½ìš°
 	if (InventoryItem != nullptr)
 	{
-		TakeItem(InventoryItem); // ¾ÆÀÌÅÛÀ» ³Ö´Â ÇÔ¼ö ½ÇÇà
+		TakeItem(InventoryItem); // ì•„ì´í…œì„ ë„£ëŠ” í•¨ìˆ˜ ì‹¤í–‰
 	}
 }
 
 void AFPShooterCharacter::TakeItem(AInventoryActor* InventoryItem)
 {
-	InventoryItem->PickUp(); // ¾×ÅÍ »èÁ¦
-	MyInventory->AddtoInventory(InventoryItem); // ÀÎº¥Åä¸® ¾×ÅÍ¸¦ ÀÎº¥ÅÍ¸® ÄÄÆ÷³ÍÆ®¿¡ ³ÖÀ½
+	InventoryItem->PickUp(); // ì•¡í„° ì‚­ì œ
+	MyInventory->AddtoInventory(InventoryItem); // ì¸ë²¤í† ë¦¬ ì•¡í„°ë¥¼ ì¸ë²¤í„°ë¦¬ ì»´í¬ë„ŒíŠ¸ì— ë„£ìŒ
 }

@@ -4,9 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "Components/BoxComponent.h"
-#include "Components/SceneComponent.h"
-#include "Kismet/GameplayStatics.h"
 #include "MyTriggerVolume.generated.h"
 
 UCLASS()
@@ -27,12 +24,12 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	UPROPERTY(EditAnywhere)
-	UBoxComponent* TriggerZone; // ÀÏ¹İÀûÀ¸·Î °£´ÜÇÑ Ãæµ¹À» Ã³¸®ÇÏ±â À§ÇØ »ç¿ëµÇ´Â »óÀÚ ÄÄÆ÷³ÍÆ®
+	class UBoxComponent* TriggerZone; // ì¼ë°˜ì ìœ¼ë¡œ ê°„ë‹¨í•œ ì¶©ëŒì„ ì²˜ë¦¬í•˜ê¸° ìœ„í•´ ì‚¬ìš©ë˜ëŠ” ìƒì ì»´í¬ë„ŒíŠ¸
 
 	UFUNCTION()
-	virtual void NotifyActorBeginOverlap(AActor* OtherActor) override; // ¾×ÅÍÀÇ Äİ¸®ÀüÀÌ ¿À¹ö·¦(Ãæµ¹)µÆÀ» ¶§ ¾Ë·ÁÁÖ´Â ÀÌº¥Æ®(ÇÔ¼ö)
+	virtual void NotifyActorBeginOverlap(AActor* OtherActor) override; // ì•¡í„°ì˜ ì½œë¦¬ì „ì´ ë‹¤ë¥¸ ì•¡í„°ì™€ ì˜¤ë²„ë©(ê²¹ì¹¨)ëì„ ë•Œ ì•Œë ¤ì£¼ëŠ” ì´ë²¤íŠ¸(í•¨ìˆ˜)
 
 	UFUNCTION()
-	virtual void NotifyActorEndOverlap(AActor* OtherActor) override;
+	virtual void NotifyActorEndOverlap(AActor* OtherActor) override; // ì•¡í„°ì˜ ì½œë¦¬ì „ì´ ì˜¤ë²„ë©ì´ ëë‚¬ì„ ë•Œ ì•Œë ¤ì£¼ëŠ” ì´ë²¤íŠ¸(í•¨ìˆ˜)
 
 };

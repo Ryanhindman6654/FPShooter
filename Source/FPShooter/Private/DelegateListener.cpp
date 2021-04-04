@@ -2,7 +2,9 @@
 
 
 #include "DelegateListener.h"
+#include "GameFramework/Actor.h"
 #include "FPShooterGameMode.h"
+#include "Kismet/GameplayStatics.h"
 
 // Sets default values
 ADelegateListener::ADelegateListener()
@@ -25,8 +27,9 @@ void ADelegateListener::BeginPlay()
 		AGameModeBase* GameMode = UGameplayStatics::GetGameMode(GetWorld());
 		AFPShooterGameMode* MyGameMode = Cast<AFPShooterGameMode>(GameMode);
 		if (MyGameMode != nullptr)
-		{
-			MyGameMode->MyStandardDelegate.BindUObject(this, &ADelegateListener::EnableLight); // MyStandardDelegate µ¨¸®°ÔÀÌÆ®¿¡ EnableLight ÇÔ¼ö ¹ÙÀÎµù
+		{ 
+			MyGameMode->MyDynamicMulticastDelegateSignature.AddDynamic(this, &ADelegateListener::FuncA); // My~Delegate ë¸ë¦¬ê²Œì´íŠ¸ì— EnableLight í•¨ìˆ˜ ë°”ì¸ë”©
+			MyGameMode->MyDynamicMulticastDelegateSignature.AddDynamic(this, &ADelegateListener::EnableLight);
 		}
 	}
 }
@@ -44,14 +47,23 @@ void ADelegateListener::EndPlay(const EEndPlayReason::Type EndPlayReason)
 	if (GetWorld() != nullptr)
 	{
 		AGameModeBase* GameMode = UGameplayStatics::GetGameMode(GetWorld());
-		AFPShooterGameMode* MyGameMode = Cast<AFPShooterGameMode>(GameMode);
+		AFPShooterGameMode* MyGameMode = (AFPShooterGameMode*)GameMode; // ë˜ëŠ” ì´ë ‡ê²Œë„ ìºìŠ¤íŒ… ê°€ëŠ¥í•˜ë‹¤.
 		if (MyGameMode != nullptr)
 		{
-			MyGameMode->MyStandardDelegate.Unbind(); // µ¨¸®°ÔÀÌÆ®¸¦ ¾ð¹ÙÀÎµù. MyStandardDelegate¿¡ ¿¬°áµÈ ÇÔ¼ö(EnableLight)¸¦ ÇØÁ¦ÇÔ
-			// ÀÌ¸¦ ÅëÇØ DelegateListener ¾×ÅÍ°¡ °ÔÀÓÀ» ¶°³¯ ¶§ °ÔÀÓ¸ðµåÀÇ MyStandardDelegate Æ÷ÀÎÅÍ°¡ ´ó±Û¸µ Æ÷ÀÎÅÍ°¡ µÇÁö ¾Êµµ·Ï ¿¹¹æÇÒ ¼ö ÀÖ´Ù.
-			GEngine->AddOnScreenDebugMessage(-1, 1, FColor::Red, FString::Printf(TEXT("Exit")));
+			if (MyGameMode->MyDynamicMulticastDelegateSignature.IsBound())
+			{
+				// MyGameMode->MyStandardDelegate.Unbind(); ë¸ë¦¬ê²Œì´íŠ¸ ì–¸ë°”ì¸ë”© (MyStandardDelegateì— ì—°ê²°ëœ í•¨ìˆ˜(EnableLight)ë¥¼ í•´ì œí•¨)
+				// ì´ë¥¼ í†µí•´ DelegateListener ì•¡í„°ê°€ ê²Œìž„ì„ ë– ë‚  ë•Œ ê²Œìž„ëª¨ë“œì˜ MyStandardDelegate í¬ì¸í„°ê°€ ëŒ•ê¸€ë§ í¬ì¸í„°ê°€ ë˜ì§€ ì•Šë„ë¡ ì˜ˆë°©í•  ìˆ˜ ìžˆë‹¤.
+				MyGameMode->MyDynamicMulticastDelegateSignature.Clear(); // ë¸ë¦¬ê²Œì´íŠ¸ ì–¸ë°”ì¸ë”©
+				GEngine->AddOnScreenDebugMessage(-1, 1, FColor::Red, FString::Printf(TEXT("Exit")));
+			}
 		}
 	}
+}
+
+void ADelegateListener::FuncA()
+{
+	GEngine->AddOnScreenDebugMessage(7, 3.0f, FColor::Blue, TEXT("I'm FuncA Call"));
 }
 
 void ADelegateListener::EnableLight()

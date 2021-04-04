@@ -7,7 +7,7 @@
 #include "CustomStruct.generated.h"
 
 
-// UE ±¸Á¶Ã¼
+// UE ï¿½ï¿½ï¿½ï¿½Ã¼
 USTRUCT(BlueprintType)
 struct FPSHOOTER_API FColoredTexture
 {
@@ -19,7 +19,7 @@ public:
 	FLinearColor Color;
 };
 
-// UE ¿­°ÅÇü
+// UE ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 UENUM()
 enum Status
 {

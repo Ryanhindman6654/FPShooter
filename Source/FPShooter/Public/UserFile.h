@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "UObject/NoExportTypes.h"
-#include "UserFile.generated.h" // generated.h ÆÄÀÏÀº ¹İµå½Ã include ¸ñ·ÏÀÇ ¸¶Áö¸·¿¡ À§Ä¡ÇØ¾ß ÇÑ´Ù.
+#include "UserFile.generated.h" // generated.h íŒŒì¼ì€ ë°˜ë“œì‹œ include ëª©ë¡ì˜ ë§ˆì§€ë§‰ì— ìœ„ì¹˜í•´ì•¼ í•œë‹¤.
 
 /**
  * 

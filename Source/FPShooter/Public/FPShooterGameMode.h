@@ -2,20 +2,23 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
+#include "EngineMinimal.h"
 #include "GameFramework/GameModeBase.h"
 #include "FPShooterGameMode.generated.h"
 
-DECLARE_DELEGATE(FStandardDelegateSignature)
+// ë¸ë¦¬ê²Œì´íŠ¸ ì‹œê·¸ë‹ˆì²˜ ì„ ì–¸
+DECLARE_DELEGATE_OneParam(FParamDelegateSignature, FLinearColor)
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FDynamicDelegateSignature);
 
-UCLASS(minimalapi)
+ UCLASS(minimalapi)
 class AFPShooterGameMode : public AGameModeBase
 {
 	GENERATED_BODY()
 
 public:
-
-	FStandardDelegateSignature MyStandardDelegate;
+	// ì‹œê·¸ë‹ˆì²˜ë¥¼ í† ëŒ€ë¡œ ë¸ë¦¬ê²Œì´íŠ¸ ì„ ì–¸
+	FParamDelegateSignature MyParameterDelegate;
+	FDynamicDelegateSignature MyDynamicMulticastDelegateSignature;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = UClassNames)
 	TSubclassOf<class UUserProfile> UPBlueprintClassName;
@@ -26,10 +29,11 @@ public:
 	void BeginPlay() override;
 
 	UPROPERTY()
-	class AMyFirstActor * SpawnedActor; // ½ºÆùÇÒ ¾×ÅÍ ÁÖ¼Ò Æ÷ÀÎÅÍ
+	class AMyFirstActor * SpawnedActor; // ìŠ¤í°í•  ì•¡í„° ì£¼ì†Œ í¬ì¸í„°
+
 
 	UFUNCTION()
-	void DestroyActorFunction(); // ½ºÆùÇÑ ¾×ÅÍ »èÁ¦ ÇÔ¼ö
+	void DestroyActorFunction(); // ìŠ¤í°í•œ ì•¡í„° ì‚­ì œ í•¨ìˆ˜
 };
 
 

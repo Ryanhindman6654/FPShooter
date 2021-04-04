@@ -3,16 +3,18 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "DelegateListener.generated.h"
+#include "GameFramework/Actor.h"
+#include "Math/Color.h"
+#include "ParamDelegateListener.generated.h"
 
 UCLASS()
-class FPSHOOTER_API ADelegateListener : public AActor
+class FPSHOOTER_API AParamDelegateListener : public AActor
 {
 	GENERATED_BODY()
 	
 public:	
 	// Sets default values for this actor's properties
-	ADelegateListener();
+	AParamDelegateListener();
 
 protected:
 	// Called when the game starts or when spawned
@@ -22,21 +24,12 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	UFUNCTION()
+	void SetLightColor(FLinearColor LightColor); // 라이트 설정 함수
+
+	UPROPERTY()
+	class UPointLightComponent* PointLight; // 라이트 컴포넌트
+
 	UPROPERTY()
 	bool LightStats = true;
-
-	UFUNCTION()
-	void EnableLight(); // 바인딩할 함수1
-
-	UFUNCTION()
-	void FuncA(); // 바인딩할 함수2
-
-	UPROPERTY()
-	class UPointLightComponent* PointLight;
-
-	UFUNCTION()
-	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
-
-
-
 };

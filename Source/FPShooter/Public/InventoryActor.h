@@ -10,11 +10,11 @@
  * 
  */
 UCLASS()
-class FPSHOOTER_API AInventoryActor : public AStaticMeshActor
+class FPSHOOTER_API AInventoryActor : public AStaticMeshActor // ì¸ë²¤í† ë¦¬ë¡œ ì €ì¥í•  ìˆ˜ ìˆëŠ” ì•¡í„°
 {
 	GENERATED_BODY()
 public:
-	AInventoryActor(); // ÀÎº¥Åä¸®·Î ÀúÀåÇÒ ¼ö ÀÖ´Â ¾×ÅÍ
-	virtual void PickUp(); // ¾ÆÀÌÅÛ È¹µæ
-	virtual void PutDown(FTransform TargetLocation); // ¾ÆÀÌÅÛ ¹ö¸®±â(³õ±â)
+	AInventoryActor(); 
+	virtual void PickUp(); // ì•„ì´í…œ íšë“
+	virtual void PutDown(FTransform TargetLocation); // ì•„ì´í…œ ë²„ë¦¬ê¸°(ë†“ê¸°)
 };

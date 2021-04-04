@@ -32,18 +32,18 @@ void AFPShooterGameMode::BeginPlay()
 {
 	Super::BeginPlay();
 
-	FTransform SpawnLocation = FTransform(FVector(-450.0f, 150.0f, 150.0f)); // ½ºÆù ÁöÁ¡ ¼³Á¤
+	FTransform SpawnLocation = FTransform(FVector(-450.0f, 150.0f, 150.0f)); // ìŠ¤í° ì§€ì  ì„¤ì •
 	FTimerHandle Timer;
 
-	SpawnedActor = GetWorld()->SpawnActor<AMyFirstActor>(AMyFirstActor::StaticClass(), SpawnLocation); // SpawnLocation ÁöÁ¡¿¡ ¾×ÅÍ·ê »ý¼ºÇÑ ÈÄ »ý¼ºµÈ ¾×ÅÍ ÁÖ¼Ò¸¦ ¹ÝÈ¯ÇÔ
-	GetWorldTimerManager().SetTimer(Timer, this, &AFPShooterGameMode::DestroyActorFunction, 5); // 5ÃÊ°£ Å¸ÀÌ¸Ó ÈÄ DestroyActorFunction() ÇÚµé¸µ
-	GEngine->AddOnScreenDebugMessage(7, 3.0f, FColor::Green, TEXT("Hierachy Actor Spawning.")); // UI¿¡ ·Î±× ±â·Ï
+	SpawnedActor = GetWorld()->SpawnActor<AMyFirstActor>(AMyFirstActor::StaticClass(), SpawnLocation); // SpawnLocation ì§€ì ì— ì•¡í„°ë£° ìƒì„±í•œ í›„ ìƒì„±ëœ ì•¡í„° ì£¼ì†Œë¥¼ ë°˜í™˜í•¨
+	GetWorldTimerManager().SetTimer(Timer, this, &AFPShooterGameMode::DestroyActorFunction, 5); // 5ì´ˆê°„ íƒ€ì´ë¨¸ í›„ DestroyActorFunction() í•¸ë“¤ë§
+	GEngine->AddOnScreenDebugMessage(7, 3.0f, FColor::Green, TEXT("Hierachy Actor Spawning.")); // UIì— ë¡œê·¸ ê¸°ë¡
 }
 
 void AFPShooterGameMode::DestroyActorFunction()
 {
 	if (SpawnedActor != nullptr)
 	{
-		SpawnedActor->Destroy(); // ½ºÆùµÈ ¾×ÅÍ »èÁ¦
+		SpawnedActor->Destroy(); // ìŠ¤í°ëœ ì•¡í„° ì‚­ì œ
 	}
 }

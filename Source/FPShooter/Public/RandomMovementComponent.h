@@ -8,7 +8,7 @@
 
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
-class FPSHOOTER_API URandomMovementComponent : public UActorComponent // ¾×ÅÍ¸¦ ·£´ıÀ¸·Î ÀÌµ¿½ÃÅ°´Â ÄÄÆ÷³ÍÆ®
+class FPSHOOTER_API URandomMovementComponent : public UActorComponent // ì•¡í„°ë¥¼ ëœë¤ìœ¼ë¡œ ì´ë™ì‹œí‚¤ëŠ” ì»´í¬ë„ŒíŠ¸
 {
 	GENERATED_BODY()
 
@@ -25,6 +25,6 @@ public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 	UPROPERTY()
-	float MovementRadius; // ÀÌµ¿ °£°İ
+	float MovementRadius; // ì´ë™ ê°„ê²©
 		
 };

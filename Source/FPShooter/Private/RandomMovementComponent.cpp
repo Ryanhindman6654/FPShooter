@@ -10,7 +10,7 @@ URandomMovementComponent::URandomMovementComponent()
 	// off to improve performance if you don't need them.
 	PrimaryComponentTick.bCanEverTick = true;
 
-	MovementRadius = 5; // À§Ä¡ ÀÌµ¿ ½Ã ºñÁßÄ¡ ¼³Á¤ 
+	MovementRadius = 5; // ìœ„ì¹˜ ì´ë™ ì‹œ ë¹„ì¤‘ì¹˜ ì„¤ì • 
 }
 
 
@@ -20,22 +20,22 @@ void URandomMovementComponent::BeginPlay()
 	Super::BeginPlay();
 
 	// ...
-	
+
 }
 
 
-// Called every frame Æ½ º° ÇÔ¼ö È£Ãâ
+// Called every frame í‹± ë³„ í•¨ìˆ˜ í˜¸ì¶œ
 void URandomMovementComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
-	
-	AActor* Parent = GetOwner(); // ¾×ÅÍ ÄÄÆ÷³ÍÆ®ÀÇ Çö ¾×ÅÍ
+
+	AActor* Parent = GetOwner(); // ì•¡í„° ì»´í¬ë„ŒíŠ¸ì˜ í˜„ ì•¡í„°
 	if (Parent)
-	{	// SetActorLoc = ¾×ÅÍÀÇ À§Ä¡ ¼³Á¤
-		Parent->SetActorLocation(Parent->GetActorLocation() + // ÇöÀç À§Ä¡ °ª¿¡´Ù »õ·Î¿î À§Ä¡°ª(vec)À» ´õÇØ¼­(+) ¾×ÅÍ¸¦ ÇöÀç À§Ä¡¿¡¼­ ´Ù¸¥ À§Ä¡·Î ÀÌµ¿ 
+	{	// SetActorLoc = ì•¡í„°ì˜ ìœ„ì¹˜ ì„¤ì •
+		Parent->SetActorLocation(Parent->GetActorLocation() + // í˜„ì¬ ìœ„ì¹˜ ê°’ì—ë‹¤ ìƒˆë¡œìš´ ìœ„ì¹˜ê°’(vec)ì„ ë”í•´ì„œ(+) ì•¡í„°ë¥¼ í˜„ì¬ ìœ„ì¹˜ì—ì„œ ë‹¤ë¥¸ ìœ„ì¹˜ë¡œ ì´ë™ 
 			FVector(
-				FMath::FRandRange(-1, 1) * MovementRadius, // XYZ °£°İ
-				FMath::FRandRange(-1, 1) * MovementRadius, 
+				FMath::FRandRange(-1, 1) * MovementRadius, // XYZ ê°„ê²©
+				FMath::FRandRange(-1, 1) * MovementRadius,
 				FMath::FRandRange(-1, 1) * MovementRadius));
 	}
 }

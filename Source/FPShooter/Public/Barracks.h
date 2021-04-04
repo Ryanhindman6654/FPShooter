@@ -32,16 +32,16 @@ public:
 	UParticleSystemComponent* SpawnPoint;
 
 	UPROPERTY()
-	UClass* UnitToSpawn; // ½ºÆùÇÒ À¯´Ö °´Ã¼
+	UClass* UnitToSpawn; // ìŠ¤í°í•  ìœ ë‹› ê°ì²´
 
 	UPROPERTY()
-	float SpawnInterval; // ½ºÆù °£°İ
+	float SpawnInterval; // ìŠ¤í° ê°„ê²©
 
 	UFUNCTION()
 	void SpawnUnit();
 
 	UFUNCTION()
-	void EndPlay(const EEndPlayReason::Type EndPlayReason) override; // ¾×ÅÍ Á¾·á ½Ã È£ÃâµÇ´Â ÇÔ¼ö
+	void EndPlay(const EEndPlayReason::Type EndPlayReason) override; // ì•¡í„° ì¢…ë£Œ ì‹œ í˜¸ì¶œë˜ëŠ” í•¨ìˆ˜
 
 	UPROPERTY()
 	FTimerHandle SpawnTimerHandle;

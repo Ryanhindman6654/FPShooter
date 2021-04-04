@@ -5,7 +5,7 @@
 #include "HierachyActor.h"
 
 // Sets default values for this component's properties
-UScenceComponent::UScenceComponent() // ¾À ÄÄÆ÷³ÍÆ® : Æ®·£½ºÆûÀ» °¡Áø ¾×ÅÍ ÄÄÆ÷³ÍÆ®
+UScenceComponent::UScenceComponent() // ì”¬ ì»´í¬ë„ŒíŠ¸ : íŠ¸ëœìŠ¤í¼ì„ ê°€ì§„ ì•¡í„° ì»´í¬ë„ŒíŠ¸
 {
 	// Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features
 	// off to improve performance if you don't need them.
@@ -22,7 +22,7 @@ void UScenceComponent::BeginPlay()
 
 	Spawn();
 	// ...
-	
+
 }
 
 
@@ -36,11 +36,11 @@ void UScenceComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActo
 
 void UScenceComponent::Spawn()
 {
-	UWorld* TheWorld = GetWorld(); // ¿ùµå °´Ã¼(¾×ÅÍ¸¦ ½ºÆù ½ÃÅ°±â À§ÇÑ)
+	UWorld* TheWorld = GetWorld(); // ì›”ë“œ ê°ì²´(ì•¡í„°ë¥¼ ìŠ¤í° ì‹œí‚¤ê¸° ìœ„í•œ)
 	if (TheWorld != nullptr)
 	{
-		FTransform ComponentTransform(this->GetComponentTransform()); // Çö ÄÄÆ÷³ÍÆ®ÀÇ ÁÂÇ¥(¡Ø ¾À ÄÄÆ÷³ÍÆ®´Â ÁÂÇ¥¸¦ °¡Áú ¼ö ÀÖ´Ù.)
-		TheWorld->SpawnActor(ActorToSpawn, &ComponentTransform); // HierachyActor ¾×ÅÍ¸¦ ºÎ¸ğ Å¬·¡½º ScenceCompoentÀÇ ÁÂÇ¥¿¡ ½ºÆù½ÃÅ²´Ù.
+		FTransform ComponentTransform(this->GetComponentTransform()); // í˜„ ì»´í¬ë„ŒíŠ¸ì˜ ì¢Œí‘œ(â€» ì”¬ ì»´í¬ë„ŒíŠ¸ëŠ” ì¢Œí‘œë¥¼ ê°€ì§ˆ ìˆ˜ ìˆë‹¤.)
+		TheWorld->SpawnActor(ActorToSpawn, &ComponentTransform); // HierachyActor ì•¡í„°ë¥¼ ë¶€ëª¨ í´ë˜ìŠ¤ ScenceCompoentì˜ ì¢Œí‘œì— ìŠ¤í°ì‹œí‚¨ë‹¤.
 	}
 }
 

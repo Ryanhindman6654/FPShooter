@@ -7,22 +7,22 @@
 // Sets default values
 ABarracks::ABarracks()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
 	BulidingMesh = CreateDefaultSubobject<UStaticMeshComponent>("BulidingMesh");
 	SpawnPoint = CreateDefaultSubobject<UParticleSystemComponent>("SpawnPoint");
-	SpawnInterval = 5; // ½ºÆù °£°İ
+	SpawnInterval = 5; // ìŠ¤í° ê°„ê²©
 
-	// ¹è·° ½ºÅ²
-	auto MeshAsset = ConstructorHelpers::FObjectFinder<UStaticMesh>(TEXT("StaticMesh'/Engine/BasicShapes/Cube.Cube'")); 
+	// ë°°ëŸ­ ìŠ¤í‚¨
+	auto MeshAsset = ConstructorHelpers::FObjectFinder<UStaticMesh>(TEXT("StaticMesh'/Engine/BasicShapes/Cube.Cube'"));
 	if (MeshAsset.Succeeded())
 	{
 		BulidingMesh->SetStaticMesh(MeshAsset.Object);
-		BulidingMesh->SetCollisionProfileName(FName(TEXT("Pawn"))); // Äİ¸®Àü(Ãæµ¹¿µ¿ª) ¼³Á¤
+		BulidingMesh->SetCollisionProfileName(FName(TEXT("Pawn"))); // ì½œë¦¬ì „(ì¶©ëŒì˜ì—­) ì„¤ì •
 	}
 
-	// ½ºÆù ÁöÁ¡ Ç¥½Ã¿ë
+	// ìŠ¤í° ì§€ì  í‘œì‹œìš©
 	auto ParticleSystem = ConstructorHelpers::FObjectFinder<UParticleSystem>(TEXT("ParticleSystem'/Engine/Tutorial/SubEditors/TutorialAssets/TutorialParticleSystem.TutorialParticleSystem'"));
 	if (ParticleSystem.Succeeded())
 	{
@@ -30,17 +30,17 @@ ABarracks::ABarracks()
 	}
 
 	RootComponent = BulidingMesh;
-	SpawnPoint->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform); // ½ºÆù Æ÷ÀÎÆ®¸¦ ·çÆ®(¸Ş½Ã)¿¡ »ó¼Ó
-	SpawnPoint->SetRelativeScale3D(FVector(0.5, 0.5, 0.5)); // ½ºÆù Æ÷ÀÎÆ®ÀÇ ½ºÄÉÀÏ ¼³Á¤
+	SpawnPoint->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform); // ìŠ¤í° í¬ì¸íŠ¸ë¥¼ ë£¨íŠ¸(ë©”ì‹œ)ì— ìƒì†
+	SpawnPoint->SetRelativeScale3D(FVector(0.5, 0.5, 0.5)); // ìŠ¤í° í¬ì¸íŠ¸ì˜ ìŠ¤ì¼€ì¼ ì„¤ì •
 
-	UnitToSpawn = ABarracksUnit::StaticClass(); // ½ºÆùÀ¯´Ö °´Ã¼ ÁöÁ¤
+	UnitToSpawn = ABarracksUnit::StaticClass(); // ìŠ¤í°ìœ ë‹› ê°ì²´ ì§€ì •
 }
 
 // Called when the game starts or when spawned
 void ABarracks::BeginPlay()
 {
 	Super::BeginPlay();
-	GetWorld()->GetTimerManager().SetTimer(SpawnTimerHandle, this, &ABarracks::SpawnUnit, SpawnInterval, true); // 5ÃÊ ¸¶´Ù À¯´Ö ½ºÆù
+	GetWorld()->GetTimerManager().SetTimer(SpawnTimerHandle, this, &ABarracks::SpawnUnit, SpawnInterval, true); // 5ì´ˆ ë§ˆë‹¤ ìœ ë‹› ìŠ¤í°
 }
 
 // Called every frame
@@ -50,15 +50,15 @@ void ABarracks::Tick(float DeltaTime)
 
 }
 
-void ABarracks::SpawnUnit() // À¯´Ö ½ºÆù ÇÔ¼ö
+void ABarracks::SpawnUnit() // ìœ ë‹› ìŠ¤í° í•¨ìˆ˜
 {
-	FVector SpawnLocation = SpawnPoint->GetComponentLocation() + FVector(50, 0, 0); // ½ºÆù Æ÷ÀÎÆ®ÀÇ ÁÂÇ¥
-	GetWorld()->SpawnActor(UnitToSpawn, &SpawnLocation); // ÇØ´ç À§Ä¡¿¡ UnitToSpawn °´Ã¼ »ı¼º
+	FVector SpawnLocation = SpawnPoint->GetComponentLocation() + FVector(50, 0, 0); // ìŠ¤í° í¬ì¸íŠ¸ì˜ ì¢Œí‘œ
+	GetWorld()->SpawnActor(UnitToSpawn, &SpawnLocation); // í•´ë‹¹ ìœ„ì¹˜ì— UnitToSpawn ê°ì²´ ìƒì„±
 }
 
-void ABarracks::EndPlay(const EEndPlayReason::Type EndPlayReason) // ¾×ÅÍ Á¾·á½Ã È£ÃâµÇ´Â ÇÔ¼ö
+void ABarracks::EndPlay(const EEndPlayReason::Type EndPlayReason) // ì•¡í„° ì¢…ë£Œì‹œ í˜¸ì¶œë˜ëŠ” í•¨ìˆ˜
 {
 	Super::EndPlay(EndPlayReason);
-	GetWorld()->GetTimerManager().ClearTimer(SpawnTimerHandle); // ºÎ¸ğ Å¬·¡½º°¡ ÆÄ±«µÉ ¶§ ½ºÆù Å¸ÀÌ¸Ó¸¦ ÇØÁ¦(À¯È¿ÇÏÁö ¾ÊÀ½)
+	GetWorld()->GetTimerManager().ClearTimer(SpawnTimerHandle); // ë¶€ëª¨ í´ë˜ìŠ¤ê°€ íŒŒê´´ë  ë•Œ ìŠ¤í° íƒ€ì´ë¨¸ë¥¼ í•´ì œ(ìœ íš¨í•˜ì§€ ì•ŠìŒ)
 }
 

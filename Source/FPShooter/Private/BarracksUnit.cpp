@@ -6,20 +6,20 @@
 // Sets default values
 ABarracksUnit::ABarracksUnit()
 {
- 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	VisualRepresentation = CreateDefaultSubobject<UParticleSystemComponent>("SpawnPoint"); // ½ºÆù À¯´Ö(ÆÄÆ¼Å¬) ÁöÁ¤
+	VisualRepresentation = CreateDefaultSubobject<UParticleSystemComponent>("SpawnPoint"); // ìŠ¤í° ìœ ë‹›(íŒŒí‹°í´) ì§€ì •
 	auto ParticleSystem = ConstructorHelpers::FObjectFinder<UParticleSystem>(TEXT("ParticleSystem'/Engine/Tutorial/SubEditors/TutorialAssets/TutorialParticleSystem.TutorialParticleSystem'"));
 	if (ParticleSystem.Succeeded())
 	{
 		VisualRepresentation->SetTemplate(ParticleSystem.Object);
 	}
-	VisualRepresentation->SetRelativeScale3D(FVector(3.0, 3.0, 3.0)); // ÆÄÆ¼Å¬ÀÇ ½ºÄÉÀÏ ÁöÁ¤
-	VisualRepresentation->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform); // »ı¼ºÇÑ ÆÄÆ¼Å¬À» ¾×ÅÍ(½ºÆù Ä³¸¯ÅÍ)¿¡ »ó¼Ó½ÃÅ´(°°Àº ÁÂÇ¥¸¦ °¡Áö°Ô)
-	// ÁÖÀÇ»çÇ× : »ó¼Ó Å¸ÀÌ¹ÖÀ» BeginPlay·Î ¼³Á¤ÇÏ¸é ÆÄÆ¼Å¬ÀÌ ¸Ê Áß¾Ó¿¡ »ı¼ºµÇ°í ³ª¼­ »ó¼ÓµÇ±â¿¡(·çÆ®¿¡ ºÙ¿©Áö±â¿¡) ¹Ì¸® »ı¼ºÀÚ¿¡¼­ »ó¼Ó ±¸Á¶¸¦ Ã³¸®ÇØÁØ´Ù.
-	SpawnCollisionHandlingMethod = ESpawnActorCollisionHandlingMethod::AlwaysSpawn; // ½ºÆùÇÒ ÁöÁ¡¿¡ °¡·Î¸·´Â°Ô ÀÖÀ» °æ¿ì ¾î¶»°Ô ÇÒÁö ¼³Á¤(¹«½ÃÇÏ°í ½ºÆù)
-	
+	VisualRepresentation->SetRelativeScale3D(FVector(3.0, 3.0, 3.0)); // íŒŒí‹°í´ì˜ ìŠ¤ì¼€ì¼ ì§€ì •
+	VisualRepresentation->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform); // ìƒì„±í•œ íŒŒí‹°í´ì„ ì•¡í„°(ìŠ¤í° ìºë¦­í„°)ì— ìƒì†ì‹œí‚´(ê°™ì€ ì¢Œí‘œë¥¼ ê°€ì§€ê²Œ)
+	// ì£¼ì˜ì‚¬í•­ : ìƒì† íƒ€ì´ë°ì„ BeginPlayë¡œ ì„¤ì •í•˜ë©´ íŒŒí‹°í´ì´ ë§µ ì¤‘ì•™ì— ìƒì„±ë˜ê³  ë‚˜ì„œ ìƒì†ë˜ê¸°ì—(ë£¨íŠ¸ì— ë¶™ì—¬ì§€ê¸°ì—) ë¯¸ë¦¬ ìƒì„±ìì—ì„œ ìƒì† êµ¬ì¡°ë¥¼ ì²˜ë¦¬í•´ì¤€ë‹¤.
+	SpawnCollisionHandlingMethod = ESpawnActorCollisionHandlingMethod::AlwaysSpawn; // ìŠ¤í°í•  ì§€ì ì— ê°€ë¡œë§‰ëŠ”ê²Œ ìˆì„ ê²½ìš° ì–´ë–»ê²Œ í• ì§€ ì„¤ì •(ë¬´ì‹œí•˜ê³  ìŠ¤í°)
+
 }
 
 // Called when the game starts or when spawned
@@ -33,7 +33,7 @@ void ABarracksUnit::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	SetActorLocation(GetActorLocation() + FVector(15, 0, -0.1)); // ½ºÆùÇÑ À¯´ÖÀÌ ¸Å ÇÁ·¹ÀÓ¸¶´Ù 10¸¸Å­ ÀüÁø
+	SetActorLocation(GetActorLocation() + FVector(15, 0, -0.1)); // ìŠ¤í°í•œ ìœ ë‹›ì´ ë§¤ í”„ë ˆì„ë§ˆë‹¤ 10ë§Œí¼ ì „ì§„
 }
 
 // Called to bind functionality to input

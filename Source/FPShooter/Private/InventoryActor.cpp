@@ -6,27 +6,27 @@
 AInventoryActor::AInventoryActor() :Super()
 {
 	PrimaryActorTick.bCanEverTick = true;
-	auto MeshAsset = ConstructorHelpers::FObjectFinder<UStaticMesh>(TEXT("StaticMesh'/Engine/BasicShapes/Cone.Cone'")); // Cone ¸ğ¾ç
+	auto MeshAsset = ConstructorHelpers::FObjectFinder<UStaticMesh>(TEXT("StaticMesh'/Engine/BasicShapes/Cone.Cone'")); // Cone ëª¨ì–‘
 	if (MeshAsset.Object != nullptr)
 	{
 		GetStaticMeshComponent()->SetStaticMesh(MeshAsset.Object);
-		GetStaticMeshComponent()->SetCollisionProfileName(FName(TEXT("Pawn"))); // Pawn Äİ¸®Àü Àû¿ë
+		GetStaticMeshComponent()->SetCollisionProfileName(FName(TEXT("Pawn"))); // Pawn ì½œë¦¬ì „ ì ìš©
 	}
 	GetStaticMeshComponent()->SetMobility(EComponentMobility::Movable);
 	SetActorEnableCollision(true);
 }
 
-void AInventoryActor::PickUp() // ÇÈ¾÷ ½Ã »èÁ¦
+void AInventoryActor::PickUp() // í”½ì—… ì‹œ ì‚­ì œ
 {
 	SetActorTickEnabled(false);
 	SetActorHiddenInGame(true);
 	SetActorEnableCollision(false);
 }
 
-void AInventoryActor::PutDown(FTransform TargetLocation) // ³»·Á³õÀ» ½Ã È°¼ºÈ­
+void AInventoryActor::PutDown(FTransform TargetLocation) // ë‚´ë ¤ë†“ì„ ì‹œ í™œì„±í™”
 {
 	SetActorTickEnabled(true);
 	SetActorHiddenInGame(false);
 	SetActorEnableCollision(true);
-	SetActorLocation(TargetLocation.GetLocation()); // ÇöÀç À§Ä¡·Î ÀÌµ¿
+	SetActorLocation(TargetLocation.GetLocation()); // í˜„ì¬ ìœ„ì¹˜ë¡œ ì´ë™
 }

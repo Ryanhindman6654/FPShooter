@@ -9,7 +9,7 @@
 
 
 UCLASS()
-class FPSHOOTER_API ABarracksUnit : public ACharacter // ¹è·°¿¡¼­ ½ºÆùµÇ´Â À¯´Ö
+class FPSHOOTER_API ABarracksUnit : public ACharacter // ë°°ëŸ­ì—ì„œ ìŠ¤í°ë˜ëŠ” ìœ ë‹›
 {
 	GENERATED_BODY()
 
@@ -29,6 +29,6 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	UPROPERTY()
-	UParticleSystemComponent* VisualRepresentation; // ½ºÆùµÉ ÆÄÆ¼Å¬
+	UParticleSystemComponent* VisualRepresentation; // ìŠ¤í°ë  íŒŒí‹°í´
 
 };

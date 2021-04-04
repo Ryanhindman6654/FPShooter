@@ -25,9 +25,9 @@ public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 	UFUNCTION()
-	void Spawn(); // ½ºÆù ÇÔ¼ö
+	void Spawn(); // ìŠ¤í° í•¨ìˆ˜
 
 	UPROPERTY(EditAnywhere)
-	TSubclassOf<class AHierachyActor> ActorToSpawn; // <ÇÏÀ§ Å¬·¡½º(AActor)·Î Á¦ÇÑµÇ´Â> ¾×ÅÍ(HierachyActor) ÁÖ¼Ò¸¦ ÀúÀåÇÏ±â À§ÇÑ Æ÷ÀÎÅÍ´Ù.
+	TSubclassOf<class AHierachyActor> ActorToSpawn; // <í•˜ìœ„ í´ë˜ìŠ¤(AActor)ë¡œ ì œí•œë˜ëŠ”> ì•¡í„°(HierachyActor) ì£¼ì†Œë¥¼ ì €ì¥í•˜ê¸° ìœ„í•œ í¬ì¸í„°ë‹¤.
 		
 };

@@ -4,38 +4,38 @@
 #include "HierachyActor.h"
 
 // Sets default values
-AHierachyActor::AHierachyActor() // °èÃş ±¸Á¶¸¦ Áö´Ï´Â ¾×ÅÍ
+AHierachyActor::AHierachyActor() // ê³„ì¸µ êµ¬ì¡°ë¥¼ ì§€ë‹ˆëŠ” ì•¡í„°
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	// ÄÄÆ÷³ÍÆ® Á¤ÀÇ
+	// ì»´í¬ë„ŒíŠ¸ ì •ì˜
 	Root = CreateDefaultSubobject<USceneComponent>("Root");
 	ChildScenceComponent = CreateDefaultSubobject<USceneComponent>("ChildScenceComponent");
 	BoxOne = CreateDefaultSubobject<UStaticMeshComponent>("BoxOne");
 	BoxTwo = CreateDefaultSubobject<UStaticMeshComponent>("BoxTwo");
 
-	// ÄÄÆ÷³ÍÆ®¿¡ ¸Ş½¬ ºÙÀÌ±â
+	// ì»´í¬ë„ŒíŠ¸ì— ë©”ì‰¬ ë¶™ì´ê¸°
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> MeshAsset(TEXT("StaticMesh'/Engine/BasicShapes/Cone.Cone'"));
 	if (MeshAsset.Succeeded())
 	{
-		BoxOne->SetStaticMesh(MeshAsset.Object); // boxOne°ú boxTwo ¸ğµÎ ¿ø»ÔÇü ¸Ş½Ã¸¦ °¡Áø´Ù.
+		BoxOne->SetStaticMesh(MeshAsset.Object); // boxOneê³¼ boxTwo ëª¨ë‘ ì›ë¿”í˜• ë©”ì‹œë¥¼ ê°€ì§„ë‹¤.
 		BoxTwo->SetStaticMesh(MeshAsset.Object);
 	}
 
-	// °èÃş±¸Á¶ »ı¼º
+	// ê³„ì¸µêµ¬ì¡° ìƒì„±
 	RootComponent = Root;
 	BoxOne->AttachTo(Root);
 	BoxTwo->AttachTo(ChildScenceComponent);
 	ChildScenceComponent->AttachTo(Root);
-	ChildScenceComponent->SetRelativeTransform(FTransform(FRotator(0, 0, 0), FVector(250, 0, 0), FVector(0.1f))); // È¸Àü, ÁÂÇ¥, ½ºÄÉÀÏ ¼³Á¤
+	ChildScenceComponent->SetRelativeTransform(FTransform(FRotator(0, 0, 0), FVector(250, 0, 0), FVector(0.1f))); // íšŒì „, ì¢Œí‘œ, ìŠ¤ì¼€ì¼ ì„¤ì •
 }
 
 // Called when the game starts or when spawned
 void AHierachyActor::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
 }
 
 // Called every frame
