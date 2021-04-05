@@ -6,6 +6,9 @@
 #include "GameFramework/Actor.h"
 #include "MyTriggerVolume.generated.h"
 
+DECLARE_EVENT(AMyTriggerVolume, EPlayerEntered) // 이벤트 매크로 함수(이벤트를 사용할 클래스, 이 함수의 시그니처) 
+// 해당 이벤트의 Broadcast()를 호출할 수 있는 유일한 클래스다.
+
 UCLASS()
 class FPSHOOTER_API AMyTriggerVolume : public AActor
 {
@@ -14,6 +17,8 @@ class FPSHOOTER_API AMyTriggerVolume : public AActor
 public:	
 	// Sets default values for this actor's properties
 	AMyTriggerVolume();
+
+	EPlayerEntered OnPlayerEntered; // 시그니처를 기반으로 이벤트 선언 (이벤트는 이 클래스에서만 사용할 수 있다)
 
 protected:
 	// Called when the game starts or when spawned

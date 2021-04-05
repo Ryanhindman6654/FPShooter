@@ -20,6 +20,7 @@ public:
 	// 시그니처를 토대로 델리게이트 선언
 	FParamDelegateSignature MyParameterDelegate;
 	FDynamicDelegateSignature MyDynamicMulticastDelegateSignature;
+	FMulticastDelegateSignature MyMulticastDelegate;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = UClassNames)
 	TSubclassOf<class UUserProfile> UPBlueprintClassName;

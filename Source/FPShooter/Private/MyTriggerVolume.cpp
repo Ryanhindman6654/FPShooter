@@ -43,6 +43,8 @@ void AMyTriggerVolume::NotifyActorBeginOverlap(AActor* OtherActor) // 노티파�
 		AFPShooterGameMode* MyGameMode = Cast<AFPShooterGameMode>(GameMode);
 		MyGameMode->MyParameterDelegate.ExecuteIfBound(FLinearColor(0, 0, 255, 8)); // 바인딩된 함수를 실행(파라미터 추가)
 		MyGameMode->MyDynamicMulticastDelegateSignature.Broadcast(); // 바인딩된 함수 모두 실행(브로드캐스팅)
+		MyGameMode->MyMulticastDelegate.Broadcast();
+		OnPlayerEntered.Broadcast(); // 선언된 이벤트를 브로드캐스팅
 	}
 }
 
@@ -58,6 +60,8 @@ void AMyTriggerVolume::NotifyActorEndOverlap(AActor* OtherActor)
 		AFPShooterGameMode* MyGameMode = Cast<AFPShooterGameMode>(GameMode);
 		MyGameMode->MyParameterDelegate.ExecuteIfBound(FLinearColor(0, 0, 255, 8)); // 바인딩된 함수를 실행(파라미터 추가)
 		MyGameMode->MyDynamicMulticastDelegateSignature.Broadcast();
+		MyGameMode->MyMulticastDelegate.Broadcast();
+		OnPlayerEntered.Broadcast();
 	}
 }
 

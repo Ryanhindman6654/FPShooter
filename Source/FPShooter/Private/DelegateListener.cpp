@@ -63,7 +63,7 @@ void ADelegateListener::EndPlay(const EEndPlayReason::Type EndPlayReason)
 
 void ADelegateListener::FuncA()
 {
-	GEngine->AddOnScreenDebugMessage(7, 3.0f, FColor::Blue, TEXT("I'm FuncA Call"));
+	GEngine->AddOnScreenDebugMessage(7, 3.0f, FColor::Orange, TEXT("I'm FuncA Call"));
 }
 
 void ADelegateListener::EnableLight()

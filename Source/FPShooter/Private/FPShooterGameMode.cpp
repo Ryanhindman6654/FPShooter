@@ -38,6 +38,7 @@ void AFPShooterGameMode::BeginPlay()
 	SpawnedActor = GetWorld()->SpawnActor<AMyFirstActor>(AMyFirstActor::StaticClass(), SpawnLocation); // SpawnLocation 지점에 액터룰 생성한 후 생성된 액터 주소를 반환함
 	GetWorldTimerManager().SetTimer(Timer, this, &AFPShooterGameMode::DestroyActorFunction, 5); // 5초간 타이머 후 DestroyActorFunction() 핸들링
 	GEngine->AddOnScreenDebugMessage(7, 3.0f, FColor::Green, TEXT("Hierachy Actor Spawning.")); // UI에 로그 기록
+	
 }
 
 void AFPShooterGameMode::DestroyActorFunction()
