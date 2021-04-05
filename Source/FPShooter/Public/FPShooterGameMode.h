@@ -9,6 +9,7 @@
 // 델리게이트 시그니처 선언
 DECLARE_DELEGATE_OneParam(FParamDelegateSignature, FLinearColor)
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FDynamicDelegateSignature);
+DECLARE_MULTICAST_DELEGATE(FMulticastDelegateSignature)
 
  UCLASS(minimalapi)
 class AFPShooterGameMode : public AGameModeBase
