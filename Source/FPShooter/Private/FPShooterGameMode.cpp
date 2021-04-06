@@ -48,3 +48,4 @@ void AFPShooterGameMode::DestroyActorFunction()
 		SpawnedActor->Destroy(); // 스폰된 액터 삭제
 	}
 }
+

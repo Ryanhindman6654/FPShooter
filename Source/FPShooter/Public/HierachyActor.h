@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
+#include "EngineMinimal.h"
 #include "GameFramework/Actor.h"
 #include "HierachyActor.generated.h"
 
@@ -24,13 +24,13 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	UPROPERTY()
-	USceneComponent* Root; 
+	class USceneComponent* Root; 
 
 	UPROPERTY()
 	USceneComponent* ChildScenceComponent;
 
 	UPROPERTY()
-	UStaticMeshComponent* BoxOne;
+	class UStaticMeshComponent* BoxOne;
 
 	UPROPERTY()
 	UStaticMeshComponent* BoxTwo;

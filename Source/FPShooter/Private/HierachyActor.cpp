@@ -1,7 +1,8 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
 #include "HierachyActor.h"
+#include "Components/StaticMeshComponent.h"
+#include "Components/SceneComponent.h"
 
 // Sets default values
 AHierachyActor::AHierachyActor() // 계층 구조를 지니는 액터
