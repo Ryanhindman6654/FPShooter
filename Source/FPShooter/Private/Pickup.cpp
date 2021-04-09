@@ -12,12 +12,12 @@ APickup::APickup()
 
 	MyMesh = CreateDefaultSubobject<UStaticMeshComponent>("MyMesh");
 	RotatingComponent = CreateDefaultSubobject<URotatingMovementComponent>("RotatingComponent");
-	RootComponent = MyMesh; // 루트 컴포넌트 설정
+	RootComponent = MyMesh;
 
 	auto MeshAsset = ConstructorHelpers::FObjectFinder<UStaticMesh>(TEXT("StaticMesh'/Engine/BasicShapes/Cube.Cube'"));
 	if (MeshAsset.Object != nullptr)
 	{
-		MyMesh->SetStaticMesh(MeshAsset.Object);
+		MyMesh->SetStaticMesh(MeshAsset.Object); // 액터 스킨 지정
 	}
 
 	MyMesh->SetCollisionProfileName(TEXT("OverlapAllDynamic")); // 콜리전 설정
@@ -41,6 +41,6 @@ void APickup::Tick(float DeltaTime)
 
 void APickup::NotifyActorBeginOverlap(AActor* OtherActor)
 {
-	OnPickedUp.ExecuteIfBound(); // 다른 액터와 겹쳐질 경우 바인딩 된 콜백 함수 호출
+	OnPickedUp.ExecuteIfBound(); // 다른 액터와 겹쳐질 경우 OnPickedUp 델리게이트에 바인딩한 함수 호출
 }
 

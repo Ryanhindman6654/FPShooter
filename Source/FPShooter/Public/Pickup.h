@@ -6,10 +6,10 @@
 #include "GameFramework/Actor.h"
 #include "Pickup.generated.h"
 
-DECLARE_DELEGATE(FPickedupEventSignature) // 델리게이트 시그니처 선언
+DECLARE_DELEGATE(FPickedupEventSignature) // 델리게이트 시그니처
 
 UCLASS()
-class FPSHOOTER_API APickup : public AActor
+class FPSHOOTER_API APickup : public AActor // 스폰되는 액터
 {
 	GENERATED_BODY()
 	
@@ -25,7 +25,7 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 	
-	FPickedupEventSignature OnPickedUp; // 델리게이트 선언
+	FPickedupEventSignature OnPickedUp; // 델리게이트
 
 	virtual void NotifyActorBeginOverlap(AActor* OtherActor) override; // 다른 액터와 겹쳐질 경우
 

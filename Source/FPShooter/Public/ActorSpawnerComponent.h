@@ -4,17 +4,17 @@
 
 #include "CoreMinimal.h"
 #include "Components/SceneComponent.h"
-#include "ScenceComponent.generated.h"
+#include "ActorSpawnerComponent.generated.h"
 
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
-class FPSHOOTER_API UScenceComponent : public USceneComponent
+class FPSHOOTER_API UActorSpawnerComponent : public USceneComponent
 {
 	GENERATED_BODY()
 
 public:	
 	// Sets default values for this component's properties
-	UScenceComponent();
+	UActorSpawnerComponent();
 
 protected:
 	// Called when the game starts
