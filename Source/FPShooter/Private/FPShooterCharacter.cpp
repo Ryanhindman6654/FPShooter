@@ -268,6 +268,8 @@ void AFPShooterCharacter::MoveForward(float Value)
 	{
 		// add movement in that direction
 		AddMovementInput(GetActorForwardVector(), Value);
+		// GetActorForwardVector는 캐릭터를 스케일 값만큼 전진/후진 시키는 함수 
+		// 입력한 키의 스케일(amount)이 양수 값(w)이면 전진 음수 값(s)이면 후진한다.
 	}
 }
 
