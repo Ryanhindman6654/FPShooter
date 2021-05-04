@@ -36,6 +36,8 @@ public:
 	UFUNCTION()
 	void DestroyActorFunction(); // 스폰한 액터 삭제 함수
 
+	//UPROPERTY()
+	//TArray<IMyInterface*> MyInterfaceInstances; // IMyInterface를 담을 배열
 
 };
 

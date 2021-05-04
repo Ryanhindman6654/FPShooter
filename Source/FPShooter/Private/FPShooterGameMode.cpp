@@ -50,7 +50,17 @@ void AFPShooterGameMode::BeginPlay()
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 1, FColor::Red, TEXT("Spawned actor implements interface!")); // UI에 확인 로그를 기록한다.
 	}
-	
+
+	//for (TActorIterator<class AActor> It(GetWorld()); It; ++It) // TActorIterator는 월드 내 <AActor가 부모인> 액터들을 순회하는 반복자다.
+	//{
+	//	AActor* Actor = *It;
+	//	IMyInterface* MyInterfaceInstance = Cast<IMyInterface>(Actor); // IMyInterface 클래스로 캐스팅 시도 
+	//	if (MyInterfaceInstance) // 캐스팅에 성공할 경우
+	//	{
+	//		MyInterfaceInstances.Add(MyInterfaceInstance); // 배열에 추가
+	//	}
+	//}
+	//GEngine->AddOnScreenDebugMessage(-1, 1, FColor::Red, TEXT("%d actors implement the interface"), MyInterfaceInstances.Num()); // 구현된 인터페이스 액터의 갯수를 출력
 }
 
 void AFPShooterGameMode::DestroyActorFunction()
