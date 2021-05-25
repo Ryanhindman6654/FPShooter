@@ -44,8 +44,9 @@ void AFPShooterGameMode::BeginPlay()
 	ASingleIntefaceActor* SpawnedInterfaceActor = GetWorld()->SpawnActor<ASingleIntefaceActor>(ASingleIntefaceActor::StaticClass(), SpawnLocation); // 인터페이스가 상속된 SingleActor를 Location에 스폰하고 주소를 저장한다.
 	if (SpawnedInterfaceActor->GetClass()->ImplementsInterface(UMyInterface::StaticClass())) 
 		/* 
-			액터의ImplementsInterface()를 통해 객체가 정확한 인터페이스를 가지고 있다면 true를 반환한다.
-			UMyInterface는 IMyInterface의 원형이고 UClass이기도 해서 리플렉션 데이터로 반환할 수 있기에 객체에서 바로 MyInterface를 찾을 수 있다.
+		 	어느 클래스(ASingleIntefaceActor)에 특정 인터페이스(MyInterface)가 구현되었는지 여부를 확인하려면 ImplementsInterface() 함수를 사용한다.
+			ImplementsInterface(*)는 UHT 정보를 통해 동작되기에 UClass 인자를 필요로하며, 따라서 UMyinterface를 인자로 넣어줘야 한다.
+			UMyInterface는 IMyInterface의 원형이고 UClass이기도해서 리플렉션 데이터로 반환할 수 있기에 UHT에서 바로 MyInterface를 찾을 수 있다.
 		 */
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 1, FColor::Red, TEXT("Spawned actor implements interface!")); // UI에 확인 로그를 기록한다.

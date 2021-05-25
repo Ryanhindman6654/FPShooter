@@ -8,7 +8,7 @@
 #include "SingleIntefaceActor.generated.h"
 
 UCLASS()
-class FPSHOOTER_API ASingleIntefaceActor : public AActor, public IMyInterface // IMyInterface 인터페이스를 상속받았다.
+class FPSHOOTER_API ASingleIntefaceActor : public AActor, public IMyInterface // (액터에서 상속받을 땐 구현부의)IMyInterface 인터페이스를 상속받았다.
 {
 	GENERATED_BODY()
 	

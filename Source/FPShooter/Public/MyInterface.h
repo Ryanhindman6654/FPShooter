@@ -7,7 +7,7 @@ class FPSHOOTER_API UMyInterface : public UInterface // 먼저 언리얼 인터�
 	GENERATED_BODY()
 };
 
-class FPSHOOTER_API IMyInterface // 선언된 UMyInterface를 기반으로 생성한 사용자 정의 인터페이스다. (I접두어이기에 UClass가 아니다)
+class FPSHOOTER_API IMyInterface // 선언된 UMyInterface는 MyInterface가 UHT에서 관리되기 위해 U 접두어를 사용했고 실제 구현되는 인터페이스는 I접두어가 들어간 이 클래스다.
 {
 	/*
 	인터페이스 구현부는 UClass 형식이 아닌데 이러한 이유는 액터가 2개 이상의 부모를 상속받을 경우 2개의 UClass가 만들어지는데 

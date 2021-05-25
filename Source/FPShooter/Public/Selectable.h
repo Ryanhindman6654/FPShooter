@@ -4,12 +4,11 @@
 
 #include "CoreMinimal.h"
 #include "UObject/Interface.h"
-#include "Killable.h"
-#include "Undead.generated.h"
+#include "Selectable.generated.h"
 
 // This class does not need to be modified.
 UINTERFACE(MinimalAPI)
-class UUndead : public UKillable // 선언부는 UKillable(UInterface)를 상속받음 
+class USelectable : public UInterface
 {
 	GENERATED_BODY()
 };
@@ -17,14 +16,13 @@ class UUndead : public UKillable // 선언부는 UKillable(UInterface)를 상속
 /**
  * 
  */
-class FPSHOOTER_API IUndead: public IKillable // 구현부는 IKillable를 상속받음
+class FPSHOOTER_API ISelectable // Selectable 인터페이스
 {
 	GENERATED_BODY()
 
 	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
 public:
-	virtual bool IsDead() override; // Killable의 함수를 오버라이딩
-	virtual void Die() override;
-	virtual void Turn();
-	virtual void Banish();
+	virtual bool IsSelectables();
+	virtual bool TrySelect();
+	virtual void Deselect();
 };
