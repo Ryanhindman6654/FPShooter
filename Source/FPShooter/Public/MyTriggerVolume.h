@@ -17,7 +17,7 @@ class FPSHOOTER_API AMyTriggerVolume : public AActor
 public:	
 	// Sets default values for this actor's properties
 	AMyTriggerVolume();
-
+	
 	EPlayerEntered OnPlayerEntered; // 시그니처를 기반으로 이벤트 선언 (이벤트는 이 클래스에서만 사용할 수 있다)
 
 protected:
