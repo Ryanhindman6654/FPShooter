@@ -46,4 +46,5 @@ public:
 	UPROPERTY()
 	FTimerHandle SpawnTimerHandle;
 
+	virtual void OnConstruction(const FTransform&) override;
 };

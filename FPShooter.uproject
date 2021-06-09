@@ -4,14 +4,18 @@
 	"Category": "",
 	"Description": "",
 	"Modules": [
-		{
+		{ 
 			"Name": "FPShooter",
 			"Type": "Runtime",
-			"LoadingPhase": "Default",
+			"LoadingPhase": "Default"
+		},
+		{
+			"Name": "FPShooterEditor",
+			"Type": "Editor",
+			"LoadingPhase": "PostEngineInit",
 			"AdditionalDependencies": [
-				"CoreUObject",
 				"Engine",
-				"UMG"
+				"CoreUObject"
 			]
 		}
 	]

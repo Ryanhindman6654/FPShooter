@@ -9,6 +9,6 @@ public class FPShooterTarget : TargetRules
 	{
 		Type = TargetType.Game;
 		DefaultBuildSettings = BuildSettingsVersion.V2;
-		ExtraModuleNames.Add("FPShooter");
+		ExtraModuleNames.AddRange(new string[] { "FPShooter", "FPShooterEditor" });
 	}
 }
